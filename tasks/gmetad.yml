@@ -48,16 +48,16 @@
   with_items:
     - ganglia-monitor
     - gmetad
-  only_if: $debian_os
+  when: debian_os
   
 - name: configure ganglia-monitor
   action: template src=ganglia/templates/gmond.conf dest=/etc/ganglia/gmond.conf owner=root group=root
   notify:
       - restart ganglia-monitor
-  only_if: $debian_os
+  when: debian_os
   
 - name: configure gmetad
   action: template src=ganglia/templates/gmetad.conf dest=/etc/ganglia/gmetad.conf owner=root group=root
   notify:
       - restart gmetad-dev
-  only_if: $debian_os
+  when: debian_os
