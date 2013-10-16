@@ -61,3 +61,7 @@
   notify:
       - restart gmetad-dev
   when: debian_os
+  
+# Open the gmetad port
+- name: Open the gmetad port
+  action: shell /sbin/iptables -I INPUT -p tcp --dport 8651 -j ACCEPT
