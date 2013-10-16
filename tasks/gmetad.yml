@@ -65,3 +65,6 @@
 # Open the gmetad port
 - name: Open the gmetad port
   action: shell /sbin/iptables -I INPUT -p tcp --dport 8651 -j ACCEPT
+
+- name: Open the access gmond port
+  action: shell /sbin/iptables -I INPUT -p udp --dport 8649 -j ACCEPT
