@@ -25,7 +25,7 @@
 
 # Debian related OSs
 - name: Apt install ganglia-monitor
-  action: apt pkg=ganglia-monitor state=installed
+  action: apt pkg=ganglia-monitor state=installed update_cache=yes cache_valid_time=604800
   when: debian_os
   
 - name: configure ganglia-monitor
