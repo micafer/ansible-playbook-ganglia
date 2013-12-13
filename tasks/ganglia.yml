@@ -11,13 +11,13 @@
   action: template src=ganglia/templates/gmond.conf dest=/etc/ganglia/gmond.conf owner=root group=root
   notify:
       - restart gmond
-  when: redhat_os and $ansible_distribution_version|float >= 6
+  when: redhat_os and {{ ansible_distribution_version|float }} >= 6
 
 - name: configure gmond (REL5)
   action: template src=ganglia/templates/gmond.old.conf dest=/etc/gmond.conf owner=root group=root
   notify:
       - restart gmond
-  when: redhat_os and $ansible_distribution_version|float < 6
+  when: redhat_os and {{ ansible_distribution_version|float }} < 6
       
 - name: start gmond
   action: service name=gmond state=running
